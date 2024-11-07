@@ -1,0 +1,6 @@
+.env
+
+miniwdl_singularity_cache
+miniwdl_download_cache
+miniwdl_call_cache
+miniwdl_test_output
