@@ -1,5 +1,7 @@
 version 1.0
 
+# this workflow lints and runs successfully
+
 workflow wf {
   call t
   output {
