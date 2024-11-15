@@ -57,9 +57,7 @@ run-miniwdl:
 	--cfg $(MINIWDL_CFG) \
 	--input $$i \
 	workflows/$(wdl).wdl; \
-	done \
-	&& echo "All tests passed" \
-	|| echo "At least one test failed"
+	done
 
 run-cromwell:
 	@echo run cromwell tests for workflows/$(wdl).wdl
