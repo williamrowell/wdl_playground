@@ -3,12 +3,12 @@ MINIWDL_CALL_CACHE=./miniwdl_call_cache
 MINIWDL_SINGULARITY_CACHE=./miniwdl_singularity_cache
 MINIWDL_OUTPUT=./miniwdl_test_output
 
-CROMWELL_PATH=$$HOME/bin/cromwell-86.jar
+CROMWELL_PATH=./bin/cromwell-87.jar
 CROMWELL_OPTIONS=./cromwell_options.json
 CROMWELL_OUTPUT=./cromwell_test_output
 
-WOMTOOL_PATH=$$HOME/bin/womtool-86.jar
-WDLTOOLS_PATH=$$HOME/bin/wdlTools-0.17.17.jar
+WOMTOOL_PATH=./bin/womtool-87.jar
+WDLTOOLS_PATH=./bin/wdlTools-0.17.17.jar
 
 ifndef VERBOSE
 .SILENT:

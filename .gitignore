@@ -1,3 +1,4 @@
+bin/*jar
 .env
 
 miniwdl_singularity_cache
