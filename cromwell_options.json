@@ -1,0 +1,6 @@
+{
+  "use_relative_output_paths": false,
+  "final_workflow_outputs_dir": "./cromwell_test_output/executions",
+  "final_workflow_log_dir": "./cromwell_test_output/wf_logs",
+  "final_call_logs_dir": "./cromwell_test_output/call_logs"
+}

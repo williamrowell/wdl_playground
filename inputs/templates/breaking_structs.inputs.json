@@ -1,0 +1,7 @@
+{
+  "wf.mystruct": {
+    "mystring": "String",
+    "myint": 42,
+    "mybool": false
+  }
+}

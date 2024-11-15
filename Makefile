@@ -3,6 +3,10 @@ MINIWDL_CALL_CACHE=./miniwdl_call_cache
 MINIWDL_SINGULARITY_CACHE=./miniwdl_singularity_cache
 MINIWDL_OUTPUT=./miniwdl_test_output
 
+CROMWELL_PATH=$$HOME/bin/cromwell-86.jar
+CROMWELL_OPTIONS=./cromwell_options.json
+CROMWELL_OUTPUT=./cromwell_test_output
+
 WOMTOOL_PATH=$$HOME/bin/womtool-86.jar
 WDLTOOLS_PATH=$$HOME/bin/wdlTools-0.17.17.jar
 
@@ -45,8 +49,8 @@ template:
 	miniwdl input_template workflows/$(wdl).wdl > inputs/templates/$(wdl).inputs.json \
 	&& cp inputs/templates/$(wdl).inputs.json inputs/$(wdl).dummy.inputs.json
 
-run:
-	@echo run tests for workflows/$(wdl).wdl
+run-miniwdl:
+	@echo run miniwdl tests for workflows/$(wdl).wdl
 	for i in inputs/$(wdl).*.inputs.json; do \
 	miniwdl run --verbose \
 	--dir $(MINIWDL_OUTPUT)/$$(basename $$i .inputs.json)/ \
@@ -56,3 +60,15 @@ run:
 	done \
 	&& echo "All tests passed" \
 	|| echo "At least one test failed"
+
+run-cromwell:
+	@echo run cromwell tests for workflows/$(wdl).wdl
+	for i in inputs/$(wdl).*.inputs.json; do \
+	java -jar $(CROMWELL_PATH) run \
+	--workflow-root $(CROMWELL_OUTPUT)/$$(basename $$i .inputs.json)/ \
+	--options $(CROMWELL_OPTIONS) \
+	--inputs $$i \
+	workflows/$(wdl).wdl \
+	&> cromwell_test_output/$$(basename $$i .inputs.json).log; \
+	done
+	rmdir cromwell-workflow-logs
